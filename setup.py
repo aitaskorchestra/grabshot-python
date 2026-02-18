@@ -1,0 +1,35 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="grabshot",
+    version="1.0.0",
+    description="Python client for the GrabShot Screenshot API",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    author="GrabShot",
+    author_email="hello@grabshot.dev",
+    url="https://grabshot.dev",
+    project_urls={
+        "Documentation": "https://grabshot.dev/docs",
+        "Source": "https://github.com/aitaskorchestra/grabshot-python",
+    },
+    packages=find_packages(),
+    python_requires=">=3.7",
+    install_requires=[],
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+    ],
+    keywords="screenshot api grabshot webpage capture pdf",
+)

@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+grabshot/__init__.py
+grabshot/client.py
+grabshot.egg-info/PKG-INFO
+grabshot.egg-info/SOURCES.txt
+grabshot.egg-info/dependency_links.txt
+grabshot.egg-info/requires.txt
+grabshot.egg-info/top_level.txt

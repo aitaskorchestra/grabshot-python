@@ -1,3 +1,40 @@
+Metadata-Version: 2.4
+Name: grabshot
+Version: 1.0.0
+Summary: Website Screenshot API - capture any URL as PNG, JPEG, WebP, or PDF. Free tier included.
+Home-page: https://grabshot.dev
+Author: GrabShot
+Author-email: GrabShot <hello@grabshot.dev>
+License: MIT
+Project-URL: Homepage, https://grabshot.dev
+Project-URL: Documentation, https://grabshot.dev/docs.html
+Project-URL: Repository, https://github.com/aitaskorchestra/grabshot-python
+Project-URL: API Explorer, https://grabshot.dev/api-explorer.html
+Project-URL: Get API Key, https://grabshot.dev/dashboard.html
+Project-URL: Changelog, https://github.com/aitaskorchestra/grabshot-python/blob/main/CHANGELOG.md
+Keywords: screenshot,website screenshot,webpage capture,url to image,screenshot api,web capture,html to image,page screenshot,og image,social preview,puppeteer alternative,headless browser,website thumbnail,web scraping,pdf generation,html to pdf,website preview,link preview,open graph
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Multimedia :: Graphics :: Capture :: Screen Capture
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.20.0
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
 # GrabShot - Website Screenshot API
 
 Capture website screenshots with a simple Python API. **Free tier: 25 screenshots/month.**

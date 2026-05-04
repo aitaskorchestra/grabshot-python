@@ -1,139 +1,155 @@
-# GrabShot - Website Screenshot API
+# GrabShot - Website Screenshot API for Python
 
-Capture website screenshots with a simple Python API. **Free tier: 25 screenshots/month.**
+Capture website screenshots with a single API call. No headless browser setup, no Puppeteer, no Selenium. Just `pip install grabshot` and go.
 
-```python
-from grabshot import GrabShot
-
-client = GrabShot("your-api-key")
-screenshot = client.capture("https://github.com")
-screenshot.save("github.png")
-```
-
-## Install
+## Quick Start
 
 ```bash
 pip install grabshot
 ```
 
-## Get Your API Key
-
-1. Go to [grabshot.dev](https://grabshot.dev)
-2. Sign up (free, no credit card)
-3. Copy your API key from the dashboard
-
-## Features
-
-- **Screenshot any URL** as PNG, JPEG, or WebP
-- **Full-page capture** for long pages
-- **Dark mode** rendering
-- **Block ads** and cookie banners
-- **Retina (2x)** resolution
-- **CSS selector** capture (screenshot specific elements)
-- **HTML to image** rendering
-- **AI cleanup** of popups/overlays (paid plans)
-- **PDF generation** via [pdf.grabshot.dev](https://pdf.grabshot.dev)
-- **Metadata extraction** via [metapeek.grabshot.dev](https://metapeek.grabshot.dev)
-
-## Quick Examples
-
-### Basic Screenshot
-
 ```python
 from grabshot import GrabShot
 
-client = GrabShot("gs_your_api_key")
+client = GrabShot("your-api-key")  # Free at https://grabshot.dev
+screenshot = client.capture("https://example.com")
+screenshot.save("example.png")
+```
 
-# Simple screenshot
-result = client.capture("https://example.com")
-result.save("example.png")
+**Get your free API key at [grabshot.dev](https://grabshot.dev)** - 25 screenshots/month on the free plan, no credit card required.
 
-# Full page, dark mode, no ads
-result = client.capture(
-    "https://news.ycombinator.com",
-    full_page=True,
-    dark_mode=True,
-    block_ads=True,
-    width=1440,
+## Features
+
+- **One line of code** to capture any URL
+- **Full-page screenshots** - capture the entire scrollable page
+- **Device frames** - wrap screenshots in iPhone, MacBook, etc.
+- **Dark mode** - capture sites in dark mode
+- **Element capture** - screenshot a specific CSS selector
+- **Multiple formats** - PNG, JPEG, WebP
+- **Cookie banner removal** - auto-dismiss cookie popups
+- **Ad blocking** - clean screenshots without ads
+- **PDF conversion** - convert any URL to PDF
+- **Meta extraction** - pull Open Graph, Twitter Card, and meta tags
+- **Zero dependencies** - uses only Python standard library
+
+## Examples
+
+### Full-page screenshot
+
+```python
+screenshot = client.capture(
+    "https://example.com",
+    full_page=True
 )
-result.save("hackernews.png")
+screenshot.save("full-page.png")
 ```
 
-### Capture Specific Element
+### Mobile screenshot with device frame
 
 ```python
-# Screenshot just the hero section
-result = client.capture(
-    "https://stripe.com",
-    selector=".hero-section",
-    retina=True,
+screenshot = client.capture(
+    "https://example.com",
+    width=390,
+    height=844,
+    device_frame="iphone"
 )
-result.save("stripe-hero.png")
+screenshot.save("mobile.png")
 ```
 
-### HTML to Image
+### Dark mode JPEG
 
 ```python
-# Render HTML directly (great for OG images)
-html = """
-<div style="width:1200px;height:630px;background:linear-gradient(135deg,#667eea,#764ba2);
-            display:flex;align-items:center;justify-content:center;color:white;
-            font-family:system-ui;font-size:48px;font-weight:bold;">
-    My Blog Post Title
-</div>
-"""
-result = client.html_to_image(html)
-result.save("og-image.png")
+screenshot = client.capture(
+    "https://example.com",
+    format="jpeg",
+    quality=85,
+    dark_mode=True
+)
+screenshot.save("dark.jpg")
 ```
 
-### Generate PDF
+### Capture specific element
 
 ```python
-result = client.pdf("https://example.com", format="A4", landscape=True)
-result.save("page.pdf")
+screenshot = client.capture(
+    "https://example.com",
+    selector="#hero-section"
+)
+screenshot.save("hero.png")
 ```
 
-### Extract Metadata
+### Clean screenshot (no ads, no cookie banners)
 
 ```python
-meta = client.meta("https://github.com")
-print(meta["title"])        # GitHub
-print(meta["description"])  # Build and ship software...
-print(meta["og:image"])     # https://github.githubassets.com/...
+screenshot = client.capture(
+    "https://example.com",
+    hide_cookie_banners=True,
+    block_ads=True
+)
+screenshot.save("clean.png")
 ```
 
-## Error Handling
+### Convert URL to PDF
 
 ```python
-from grabshot import GrabShot, GrabShotError
-
-client = GrabShot("gs_your_api_key")
-
-try:
-    result = client.capture("https://example.com")
-    result.save("screenshot.png")
-except GrabShotError as e:
-    print(f"Error {e.status_code}: {e.message}")
+pdf_bytes = client.pdf("https://example.com", format="A4")
+with open("page.pdf", "wb") as f:
+    f.write(pdf_bytes)
 ```
 
-## Plans
+### Extract meta tags
 
-| Plan | Price | Screenshots/mo | Features |
-|------|-------|----------------|----------|
-| Free | $0 | 25 | Basic capture |
-| Starter | $9/mo | 1,000 | + Ad blocking, dark mode |
-| Pro | $29/mo | 10,000 | + AI cleanup, retina, priority |
-| Business | $79/mo | 50,000 | + Custom branding, SLA |
+```python
+meta = client.meta("https://example.com")
+print(meta["title"])
+print(meta["og:image"])
+```
 
-[See full pricing](https://grabshot.dev/#pricing)
+## API Reference
 
-## Links
+### `GrabShot(api_key, base_url="https://grabshot.dev", timeout=30)`
 
-- [Website](https://grabshot.dev)
-- [API Docs](https://grabshot.dev/docs.html)
-- [API Explorer](https://grabshot.dev/api-explorer.html)
-- [Dashboard](https://grabshot.dev/dashboard.html)
-- [GitHub](https://github.com/aitaskorchestra/grabshot-python)
+Create a client instance.
+
+### `client.capture(url, **options) -> Screenshot`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `url` | str | required | URL to capture |
+| `width` | int | 1280 | Viewport width (px) |
+| `height` | int | 800 | Viewport height (px) |
+| `full_page` | bool | False | Capture full scrollable page |
+| `format` | str | "png" | "png", "jpeg", or "webp" |
+| `quality` | int | auto | JPEG/WebP quality (1-100) |
+| `delay` | int | None | Wait before capture (ms) |
+| `device_frame` | str | None | "iphone", "macbook", etc. |
+| `dark_mode` | bool | False | Enable dark mode |
+| `hide_cookie_banners` | bool | False | Remove cookie popups |
+| `block_ads` | bool | False | Block ads and trackers |
+| `selector` | str | None | CSS selector to capture |
+| `wait_for` | str | None | CSS selector to wait for |
+
+### `Screenshot`
+
+- `.save(path)` - Save to file, returns Path
+- `.data` - Raw bytes
+- `.size` - Size in bytes
+
+## Pricing
+
+| Plan | Price | Screenshots/mo |
+|------|-------|----------------|
+| Free | $0 | 25 |
+| Starter | $9/mo | 1,000 |
+| Pro | $29/mo | 10,000 |
+| Business | $79/mo | 50,000 |
+
+## Why GrabShot?
+
+- **No infrastructure** - No Docker, no Chrome, no Puppeteer to maintain
+- **Fast** - Screenshots in ~2 seconds, globally distributed
+- **Reliable** - 99.9% uptime, automatic retries
+- **Affordable** - Free tier to get started, pay as you grow
 
 ## License
 

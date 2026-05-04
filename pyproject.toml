@@ -5,23 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "grabshot"
 version = "1.0.0"
-description = "Website Screenshot API - capture any URL as PNG, JPEG, WebP, or PDF. Free tier included."
+description = "Website Screenshot API - capture any URL as PNG, JPEG, or WebP with one API call. Free tier included."
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 authors = [{name = "GrabShot", email = "hello@grabshot.dev"}]
 keywords = [
-    "screenshot", "website screenshot", "webpage capture", "url to image",
-    "screenshot api", "web capture", "html to image", "page screenshot",
-    "og image", "social preview", "puppeteer alternative", "headless browser",
-    "website thumbnail", "web scraping", "pdf generation", "html to pdf",
-    "website preview", "link preview", "open graph"
+    "screenshot", "website-screenshot", "url-to-image", "webpage-capture",
+    "screenshot-api", "web-capture", "html-to-image", "page-screenshot",
+    "og-image", "social-preview", "puppeteer-alternative", "headless-browser",
+    "website-thumbnail", "screenshot-service", "url-screenshot",
+    "website-preview", "web-screenshot", "capture-screenshot",
+    "screenshot-tool", "api-client"
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -29,18 +31,12 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Internet :: WWW/HTTP",
-    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+    "Topic :: Multimedia :: Graphics :: Capture",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = ["requests>=2.20.0"]
 
 [project.urls]
 Homepage = "https://grabshot.dev"
-Documentation = "https://grabshot.dev/docs.html"
+Documentation = "https://grabshot.dev/docs"
 Repository = "https://github.com/aitaskorchestra/grabshot-python"
-"API Explorer" = "https://grabshot.dev/api-explorer.html"
-"Get API Key" = "https://grabshot.dev/dashboard.html"
-Changelog = "https://github.com/aitaskorchestra/grabshot-python/blob/main/CHANGELOG.md"
-
-[tool.setuptools.packages.find]
-include = ["grabshot*"]
+"Bug Tracker" = "https://github.com/aitaskorchestra/grabshot-python/issues"
